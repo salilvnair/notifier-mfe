@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/notifier",
+  "dest": "../../dist/@salilvnair/notifier-element",
   "lib": {
     "entryFile": "src/public-api.ts"
   }

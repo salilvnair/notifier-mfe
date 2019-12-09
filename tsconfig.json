@@ -21,10 +21,10 @@
     ],
     "paths": {
       "notifier": [
-        "dist/notifier"
+        "dist/@salilvnair/notifier-element"
       ],
       "notifier/*": [
-        "dist/notifier/*"
+        "dist/@salilvnair/notifier-element/*"
       ]
     }
   }

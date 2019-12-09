@@ -1,5 +1,6 @@
+import { InfoNotifierDialog } from './../../core/info/info-dialog.component';
 import { Component, OnInit, Input } from '@angular/core';
-import { InfoNotifier } from '../../core/info/info.notifier';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'lib-info-notifier',
@@ -8,13 +9,22 @@ import { InfoNotifier } from '../../core/info/info.notifier';
 })
 export class InfoNotifierComponent implements OnInit {
 
-  @Input() infoData: any;
+  @Input() info: string;
   @Input() width: string;
 
-  constructor(private infoNotifier: InfoNotifier) { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.infoNotifier.notify(this.infoData, this.width);
+    this.show();
+  }
+
+  show() {
+    this.dialog.open(InfoNotifierDialog, {
+      width: this.width||'250px',
+      data: {info: this.info},
+      closeOnNavigation: false,
+      disableClose:true
+    });
   }
 
 }

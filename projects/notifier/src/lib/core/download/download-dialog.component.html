@@ -1,0 +1,20 @@
+<h1 mat-dialog-title #header *ngIf="!onlyInstall">Update is being downloaded!</h1>
+<h1 mat-dialog-title #header *ngIf="hasPendingInstallation">Installation pending!</h1>
+<h1 mat-dialog-title #header *ngIf="onlyInstall && !hasPendingInstallation">Installing!</h1>
+<div mat-dialog-content>
+    <div #progress class="progress__container" *ngIf="!hasPendingInstallation">
+            <div #bar class="bar__container">
+                <ng-container  *ngIf="data.downloadStatus.currentPercentage">
+                        {{data.downloadStatus.currentPercentage}}
+                </ng-container>
+            </div>
+    </div>
+</div>
+<div mat-dialog-content *ngIf="hasPendingInstallation">
+    Update has been downloaded earlier,Do you want to install it now?
+</div>
+<div mat-dialog-actions class="action__container" *ngIf="!downloadAndInstall">
+    <button mat-raised-button color="primary" [disabled]="disableInstall" *ngIf="!disableInstall" (click)="onClickInstall()">Install</button>
+    <button mat-raised-button color="warn" (click)="onClickClose()" *ngIf="!onlyInstall">Close</button>
+    <button mat-raised-button color="warn" (click)="onClickRestart()"  *ngIf="onlyInstall && disableInstall">Restart</button>
+</div> 
